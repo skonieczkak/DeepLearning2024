@@ -41,7 +41,7 @@ def generate_model1(input_shape,
         LeakyReLU(0.1),
         Dropout(dropout_rate2),
         Dense(num_classes, activation='softmax')
-    ])
+        ], name='Custom model 1')
 
     lr_schedule = ExponentialDecay(
         initial_learning_rate=learning_rate,
@@ -83,7 +83,7 @@ def generate_model2(input_shape,
         Keras Sequential model: Compiled and ready to use.
     """
 
-    model = Sequential()
+    model = Sequential(name='Custom model 2')
 
     # Adding Conv2D, MaxPooling2D, Dropout, BatchNormalization, and Dense layers similar to the previous function
     model.add(Conv2D(filters=32, kernel_size=(3,3), input_shape=input_shape, activation='relu', padding='same', kernel_initializer='he_uniform', kernel_regularizer=l2(weight_decay)))
@@ -157,7 +157,7 @@ def generate_model3(input_shape,
         Dense(32, activation='relu'),
         Dropout(dropout_rate3),
         Dense(num_classes, activation='softmax')
-    ])
+        ], name='Custom model 3')
 
     lr_schedule = ExponentialDecay(
         initial_learning_rate=learning_rate,

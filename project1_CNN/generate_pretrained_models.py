@@ -31,7 +31,7 @@ def generate_resnet_model(input_shape, num_classes, learning_rate=0.001, decay_s
         base_model,
         Flatten(),
         Dense(num_classes, activation='softmax')
-    ])
+    ], name='ResNet50')
 
     lr_schedule = ExponentialDecay(
         initial_learning_rate=learning_rate,
@@ -71,7 +71,7 @@ def generate_vgg_model(input_shape, num_classes, learning_rate=0.001, decay_step
         base_model,
         Flatten(),
         Dense(num_classes, activation='softmax')
-    ])
+    ], name='VGG16')
 
     lr_schedule = ExponentialDecay(
         initial_learning_rate=learning_rate,
