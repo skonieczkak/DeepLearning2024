@@ -48,8 +48,7 @@ def custom_model1(shape, number_classes, learning_rate=0.001, dropout_rate1=0.25
 
     model = Model(inputs=inputs, outputs=outputs, name='Advanced_Custom_Model_1')
 
-    learning_schedule = PiecewiseConstantDecay(list(range(0, 100, 10)),
-                                          [learning_rate * 0.5 ** (i // 10) for i in range(11)])
+    learning_schedule = ExponentialDecay(initial_learning_rate=learning_rate, decay_steps=decay_steps, decay_rate=decay_rate, staircase=True)
     optimizer = Adam(learning_rate=learning_schedule)
 
     model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
